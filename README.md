@@ -1,45 +1,40 @@
-# Proyek-Klasifikasi-
+# Proyek-Klasifikasi-Gambar-Hewan
 
 ## 📝 Overview
 ```
-Proyek ini bertujuan untuk membangun model klasifikasi gambar buah menggunakan pendekatan Convolutional Neural Network (CNN) dengan transfer learning.
-Klasifikasi gambar adalah salah satu tantangan populer dalam bidang computer vision, dan
-proyek ini dirancang untuk mengenali jenis buah berdasarkan citra digital yang diberikan.
- Dengan menggunakan model pre-trained seperti MobileNetV2 dan DenseNet121, proses pelatihan dapat dilakukan secara efisien sambil tetap mencapai hasil yang akurat.
-Proyek ini dibangun menggunakan Python dan pustaka deep learning populer seperti TensorFlow dan Keras,
-dan seluruh proses pelatihan serta evaluasi dilakukan menggunakan Google Colab.
+Proyek ini bertujuan untuk membangun model klasifikasi gambar hewan menggunakan pendekatan Convolutional Neural Network (CNN) dengan transfer learning.
+Klasifikasi gambar hewan merupakan salah satu aplikasi penting dalam computer vision, dan proyek ini dirancang untuk mengenali jenis hewan berdasarkan citra digital.
+Dengan memanfaatkan model pre-trained seperti MobileNetV2 dan EfficientNetV2B0, proses pelatihan dapat dilakukan secara efisien sambil mencapai akurasi tinggi.
+Proyek ini dibangun menggunakan Python dengan pustaka deep learning seperti TensorFlow dan Keras, dan seluruh proses pelatihan serta evaluasi dilakukan di Google Colab.
 ```
 
 ## 📂 Split Data
+```
+Dataset gambar hewan, yang diunduh dari Kaggle (dataset animals10), dibagi menjadi tiga bagian: training set, validation set, dan test set.
+Pembagian ini memastikan model dapat belajar dari data pelatihan, memvalidasi performa selama pelatihan, dan diuji pada data yang belum pernah dilihat.
+Augmentasi data diterapkan pada data pelatihan menggunakan ImageDataGenerator untuk meningkatkan keragaman citra dan mencegah overfitting.
+Teknik augmentasi meliputi rotasi acak, zoom, horizontal flip, dan pergeseran piksel.
+```
 
+## 🧠 Model
 ```
-Dataset gambar buah dibagi menjadi tiga bagian utama: training set, validation set, dan test set.
-Pembagian ini dilakukan untuk memastikan bahwa model dapat belajar dari sebagian data (training), divalidasi kinerjanya selama proses pelatihan (validation),
-dan akhirnya diuji performanya pada data yang benar-benar belum pernah dilihat sebelumnya (test).
-Selain itu, augmentasi data diterapkan pada data pelatihan menggunakan ImageDataGenerator untuk memperkaya keragaman citra dan mencegah overfitting.
-Augmentasi meliputi rotasi acak, zoom, horizontal flip, dan pergeseran piksel.
-```
-##  Model
-```
-Model Menggunakan Model Sequential, Conv2D, Pooling Layer dan mengadopsi arsitektur transfer learning, di mana model pre-trained seperti MobileNetV2
-dan DenseNet121 dimanfaatkan sebagai feature extractor.
-Lapisan tambahan seperti GlobalAveragePooling2D, Dropout, dan Dense digunakan di atas backbone untuk menyesuaikan dengan jumlah kelas dalam dataset buah.
-Model dikompilasi menggunakan optimizer Adam dengan learning rate yang disesuaikan otomatis menggunakan ReduceLROnPlateau.
-Proses pelatihan dipantau oleh beberapa callback, termasuk EarlyStopping dan ModelCheckpoint, serta sebuah callback khusus yang menghentikan pelatihan saat akurasi mencapai 98%.
+Model menggunakan arsitektur Sequential dengan lapisan Conv2D, MaxPooling2D, dan mengadopsi transfer learning dengan model pre-trained seperti MobileNetV2 dan EfficientNetV2B0 sebagai feature extractor.
+Lapisan tambahan seperti GlobalAveragePooling2D, Dropout, dan Dense ditambahkan untuk menyesuaikan dengan jumlah kelas hewan dalam dataset.
+Model dikompilasi menggunakan optimizer Adam dengan learning rate yang diatur secara adaptif.
+Callback seperti EarlyStopping dan ModelCheckpoint digunakan untuk memantau pelatihan dan menyimpan model terbaik berdasarkan performa validasi.
 ```
 
 ## 📊 Hasil Evaluasi
 ```
-Model menunjukkan performa yang sangat baik dengan akurasi pelatihan mendekati 98%, validasi sekitar 97%, dan akurasi pengujian (test) juga berada di kisaran 97%.
-Selain metrik akurasi, evaluasi juga mencakup confusion matrix dan classification report yang menunjukkan bahwa model mampu mengenali semua kelas buah dengan cukup baik.
-Precision, recall, dan f1-score pada masing-masing kelas juga tergolong tinggi, menunjukkan bahwa model seimbang dan tidak bias terhadap kelas tertentu.
-Visualisasi confusion matrix menggunakan heatmap memberikan gambaran jelas tentang prediksi yang benar dan salah.
+Model menunjukkan performa luar biasa dengan akurasi prediksi mendekati 100% untuk semua kelas yang diuji, termasuk butterfly (99,99%), chicken (100%), dog (100%), horse (99,95%), dan spider (100%).
+Evaluasi dilakukan dengan menampilkan hasil prediksi pada gambar uji, yang menunjukkan bahwa model mampu mengenali kelas hewan dengan sangat akurat.
+Hasil ini menunjukkan bahwa model seimbang dan tidak bias terhadap kelas tertentu, dengan performa yang sangat baik pada data baru.
 ```
 
 ## ✅ Kesimpulan
 ```
-Dengan memanfaatkan transfer learning dan strategi augmentasi data yang baik, model CNN dalam proyek ini berhasil mengklasifikasikan gambar buah dengan akurasi tinggi.
-Hasil evaluasi menunjukkan bahwa model tidak hanya akurat, tetapi juga cukup general untuk digunakan pada data baru yang belum pernah dilihat.
-Proyek ini menunjukkan potensi besar dari transfer learning dalam menyelesaikan permasalahan klasifikasi citra secara efisien,
-bahkan ketika dataset yang digunakan tidak terlalu besar. Model ini dapat menjadi dasar yang kuat untuk pengembangan sistem klasifikasi gambar lebih lanjut di berbagai domain.
+Dengan memanfaatkan transfer learning dan augmentasi data yang efektif, model CNN dalam proyek ini berhasil mengklasifikasikan gambar hewan dengan akurasi sangat tinggi.
+Hasil evaluasi menunjukkan bahwa model tidak hanya akurat, tetapi juga mampu menggeneralisasi dengan baik pada data yang belum pernah dilihat.
+Proyek ini menunjukkan kekuatan transfer learning dalam menyelesaikan tugas klasifikasi citra secara efisien, bahkan dengan dataset yang kompleks.
+Model ini dapat menjadi fondasi untuk pengembangan sistem klasifikasi gambar hewan lebih lanjut atau aplikasi computer vision di domain lain.
 ```
